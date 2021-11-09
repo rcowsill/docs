@@ -1,4 +1,4 @@
-name: "Workflow CodeQL Scan"
+name: "Workflow Scan"
 
 on:
   push:
