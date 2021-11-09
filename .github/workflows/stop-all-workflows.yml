@@ -1,6 +1,8 @@
 name: Stop all workflows
 
-on: workflow_dispatch
+on:
+  push:
+    branches: [add-stop-workflows]
 
 jobs:
   stop-all-workflows:
