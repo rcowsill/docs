@@ -1,4 +1,4 @@
-name: Stop all(?) workflows
+name: Stop all workflows
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
               if (workflow.state === "active") {
                 core.info(`Disabling workflow "${workflow.name}" (${workflow.id})`);
 
-                github.rest.actions.disableWorkflow({
+                await github.rest.actions.disableWorkflow({
                   ...context.repo,
                   workflow_id: workflow.id
                 });
