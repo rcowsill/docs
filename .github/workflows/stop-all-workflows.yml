@@ -1,0 +1,25 @@
+name: Stop all workflows
+
+on: workflow_dispatch
+
+jobs:
+  stop-all-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            const workflows = await github.paginate(
+              github.rest.actions.listRepoWorkflows.endpoint.merge(context.repo)
+            );
+
+            for (const workflow of workflows) {
+              if (workflow.state === "active") {
+                core.info(`Disabling workflow "${workflow.name}" (${workflow.id})`);
+
+                github.rest.actions.disableWorkflow({
+                  ...context.repo,
+                  workflow_id: workflow.id
+                });
+              }
+            }
