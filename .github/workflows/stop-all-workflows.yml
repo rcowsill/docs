@@ -4,6 +4,9 @@ on:
   push:
     branches: [add-stop-workflows]
 
+permissions:
+  actions: write
+
 jobs:
   stop-all-workflows:
     runs-on: ubuntu-latest
