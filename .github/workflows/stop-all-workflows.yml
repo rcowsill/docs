@@ -1,4 +1,4 @@
-name: Stop all workflows
+name: Stop all(?) workflows
 
 on:
   push:
