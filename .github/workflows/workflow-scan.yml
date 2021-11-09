@@ -1,0 +1,19 @@
+name: "Workflow CodeQL Scan"
+
+on:
+  push:
+    branches: [feat/add-wsa]
+
+permissions:
+  security-events: write
+
+jobs:
+  workflow-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: rcowsill/workflow-scan-action@v1
